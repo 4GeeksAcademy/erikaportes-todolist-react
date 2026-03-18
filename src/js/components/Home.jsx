@@ -3,13 +3,13 @@ import React, { useState } from "react";
 //create your first component
 const ToDoList = () => {
 
-	const [inputList, setInputList] = useState("")
+	const [inputTarea, setInputTarea] = useState("")
 	const [listaTareas, setListaTareas] = useState([])
 
 	function crearTarea(Enter) {
-		if (Enter === "Enter" && inputList.trim() !== "") {
-			setListaTareas([...listaTareas, inputList])
-			setInputList("")
+		if (Enter === "Enter" && inputTarea.trim() !== "") {
+			setListaTareas([...listaTareas, inputTarea])
+			setInputTarea("")
 		}
 	}
 
@@ -26,8 +26,8 @@ const ToDoList = () => {
 				<input
 					type="text"
 					placeholder='What do you need to do?'
-					value={inputList}
-					onChange={(e) => setInputList(e.target.value)}
+					value={inputTarea}
+					onChange={e => setInputTarea(e.target.value)}
 					onKeyUp={evento => crearTarea(evento.key)}
 				/>
 				<ul className="list-group">
