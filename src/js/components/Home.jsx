@@ -32,20 +32,23 @@ const ToDoList = () => {
 				/>
 
 				<ul className="list-group">
-					{(
-						listaTareas.map((tarea, indice) => (
-							<li
-								className="list-group-item d-flex justify-content-between align-items-center tarea-item"
-								key={tarea + indice}
-							>
-								{tarea}
-								<i
-									onClick={() => trash(indice)}
-									className="fa-solid fa-trash-can trash-icon ms-auto"
-									style={{ cursor: 'pointer' }}
-								></i>
-							</li>
-						))
+					{listaTareas.length === 0 ? (
+						<li className="list-group-item text-muted">
+							No hay tareas, agrega alguna tarea.
+						</li>
+					) : (listaTareas.map((tarea, indice) => (
+						<li
+							className="list-group-item d-flex justify-content-between align-items-center tarea-item"
+							key={tarea + indice}
+						>
+							{tarea}
+							<i
+								onClick={() => trash(indice)}
+								className="fa-solid fa-trash-can trash-icon ms-auto"
+								style={{ cursor: 'pointer' }}
+							></i>
+						</li>
+					))
 					)}
 				</ul>
 
