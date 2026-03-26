@@ -25,12 +25,48 @@ const ToDoList = () => {
 
 				<input
 					type="text"
-					placeholder='What do you need to do?'
+					placeholder='Agrega alguna tarea'
 					value={inputTarea}
 					onChange={e => setInputTarea(e.target.value)}
 					onKeyUp={evento => crearTarea(evento.key)}
 				/>
+
 				<ul className="list-group">
+					{(
+						listaTareas.map((tarea, indice) => (
+							<li
+								className="list-group-item d-flex justify-content-between align-items-center tarea-item"
+								key={tarea + indice}
+							>
+								{tarea}
+								<i
+									onClick={() => trash(indice)}
+									className="fa-solid fa-trash-can trash-icon ms-auto"
+									style={{ cursor: 'pointer' }}
+								></i>
+							</li>
+						))
+					)}
+				</ul>
+
+				<div className="mt-2 text-secondary">
+					{listaTareas.length === 0
+						? "0 tareas pendientes"
+						: `${listaTareas.length} ${listaTareas.length === 1 ? "tarea" : "tareas"} por hacer`}
+				</div>
+
+
+			</div>
+
+		</>
+
+	)
+};
+
+export default ToDoList;
+
+
+{/* <ul className="list-group">
 					{listaTareas.map((tarea, indice) => {
 						return (
 							<li
@@ -46,13 +82,4 @@ const ToDoList = () => {
 					})
 					}
 				</ul>
-				<div>{listaTareas.length} tasks</div>
-
-			</div>
-
-		</>
-
-	)
-};
-
-export default ToDoList;
+				<div>{listaTareas.length} tasks</div> */}
